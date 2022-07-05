@@ -38,10 +38,6 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="discount" type="INT" defaultValue="0">
-                <constraints nullable="false"/>
-            </column>
-
             <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
                 <constraints nullable="false"/>
             </column>
@@ -105,6 +101,27 @@
     </changeSet>
 
     <changeSet id="1.0.5" author="dmitry.meshchanchuk">
+        <createTable tableName="pictures">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="description" type="VARCHAR(300)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="url" type="VARCHAR(255)" >
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.6" author="dmitry.meshchanchuk">
         <insert tableName="roles">
             <column name="name" value="ROLE_USER"/>
             <column name="status" value="ACTIVE"/>
@@ -116,7 +133,7 @@
         </insert>
     </changeSet>
 
-    <changeSet id="1.0.6" author="dmitry.meshchanchuk">
+    <changeSet id="1.0.7" author="dmitry.meshchanchuk">
         <insert tableName="users">
             <column name="username" value="admin"/>
             <column name="email" value="admin@example.com"/>
@@ -127,7 +144,7 @@
         </insert>
     </changeSet>
 
-    <changeSet id="1.0.7" author="dmitry.meshchanchuk">
+    <changeSet id="1.0.8" author="dmitry.meshchanchuk">
         <insert tableName="user_roles">
             <column name="user_id" value="1"/>
             <column name="role_id" value="2"/>
